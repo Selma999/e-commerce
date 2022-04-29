@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import CardDescription from "../Card/CardDescription";
 
-import { fetchProduct } from "../../Redux/Actions/Product";
 import { fetchAllProductsFromCatalog } from "../../Redux/Actions/Catalog";
-import { Link, useParams } from "react-router-dom";
 
 function Product(props) {
   console.log(props);

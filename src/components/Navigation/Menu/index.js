@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import classNames from "classnames";
 
 import MenuOption from "./MenuOption";
-import logo from "../../../assets/img/coolblue.svg";
 
 import { getCategories } from "../../../Redux/Actions/Categories";
 

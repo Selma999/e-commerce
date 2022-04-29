@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import Card from "../Card";
 import CardDescription from "../Card/CardDescription";
 import Button from "../../components/Button";
 

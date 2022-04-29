@@ -7,7 +7,7 @@ import Menu from "./Menu";
 
 import logo from "../../assets/img/coolblue.svg";
 
-function Navigation({ responsiveMode }) {
+function Navigation() {
   const [menuOpened, setMenuOpened] = useState(false);
 
   const navigate = useNavigate();

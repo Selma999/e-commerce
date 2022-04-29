@@ -44,11 +44,9 @@ function Checkout(props) {
         "Credit card is not valid anymore",
 
         (value) => {
-          //05/25
           if (value) {
             const splitedArray = value.toString().split("/");
             return isExpirationDateValid(splitedArray[0], splitedArray[1]);
-            // return isExpirationDateValid("02", "23");
           }
 
           return false;
