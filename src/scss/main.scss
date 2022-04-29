@@ -38,6 +38,11 @@ code {
   .header {
     display: flex;
     flex-wrap: wrap;
+    &__search {
+      &__input {
+        width: 80%;
+      }
+    }
   }
 
   .menu {
@@ -108,6 +113,14 @@ code {
 }
 
 @media screen and (max-width: 768px) {
+  .header {
+    &__search {
+      &__input {
+        width: 60%;
+      }
+    }
+  }
+
   .card {
     justify-content: center;
     width: unset;
@@ -155,6 +168,11 @@ code {
       padding: 0;
       img {
         padding: 12px;
+      }
+    }
+    &__search {
+      &__input {
+        width: 50%;
       }
     }
   }
