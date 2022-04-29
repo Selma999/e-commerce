@@ -3,14 +3,14 @@ import React, { useState } from "react";
 function Search() {
   const [searchClicked, setSearchClicked] = useState(false);
   const clickSearchHandler = () => {
-    setSearchClicked(true); 
+    setSearchClicked(true);
   };
 
-  const closeSearchHandler = () => { 
+  const closeSearchHandler = () => {
     setSearchClicked(false);
   };
   return (
-    <div 
+    <div
       className={
         !searchClicked
           ? "header__search-wrapper"
@@ -62,16 +62,16 @@ function Search() {
               <path
                 d="M18 6L6 18"
                 stroke="#4E7187"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M6 6L18 18"
                 stroke="#4E7187"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
