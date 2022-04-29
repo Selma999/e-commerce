@@ -1,0 +1,108 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 96px;
+  border-bottom: 1px solid rgb(236, 234, 234);
+
+  &__first-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 40px;
+  }
+
+  &__second-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 40px;
+
+    > div {
+      cursor: pointer;
+    }
+
+    img {
+      display: flex;
+      width: 30px;
+      height: 30px;
+      color: $mint;
+    }
+  }
+
+  &__icon-cart {
+    padding: 24px;
+  }
+
+  &__search {
+    &__icon {
+      display: flex;
+      svg {
+        path {
+          stroke: $black;
+        }
+      }
+    }
+
+    &__icon-closed {
+      display: none;
+    }
+
+    &__input {
+      display: flex;
+      align-items: center;
+
+      border: 1px solid $mint;
+      border-radius: 3px;
+      input {
+        display: flex;
+        align-items: center;
+        height: $headerHeight;
+        width: 100%;
+        padding: unset;
+
+        border: none;
+
+        font-family: $fontFamily;
+        font-size: $fontSize;
+
+        &::placeholder {
+          color: $mint;
+          padding-left: 24px;
+        }
+
+        &:focus {
+          outline: $black;
+        }
+      }
+
+      > div {
+        padding: 0 10px;
+      }
+    }
+  }
+
+  &__search-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > div:first-of-type {
+      margin-right: 16px;
+    }
+  }
+
+  &__search-wrapper-clicked {
+    display: unset;
+    position: absolute;
+    width: 80%;
+    left: 100px;
+  }
+}
+
+.login-icon-wrapper {
+  img {
+    margin-left: 16px;
+  }
+}

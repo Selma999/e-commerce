@@ -1,0 +1,98 @@
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formik-input {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 6px;
+
+  input {
+    min-width: 200px;
+    padding: 12px 24px;
+    text-align: left;
+    border: none;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    color: $mint;
+
+    &::placeholder {
+      text-align: left;
+      color: lightgray;
+    }
+
+    &:focus {
+      outline: 2px solid $mint;
+      &::placeholder {
+        color: $mint;
+        font-weight: 600;
+      }
+    }
+
+    &:hover {
+      border: 1px solid $mint;
+      &::placeholder {
+        color: $mint;
+      }
+    }
+  }
+}
+
+.formik {
+  &__section {
+    &__title {
+      font-size: 24px;
+      line-height: 32px;
+      padding: 24px 6px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $lightMint;
+    border: 1px solid $lightMint;
+    border-radius: 3px;
+    color: $mint;
+    font-weight: 600;
+
+    min-width: 250px;
+    padding: 16px 24px;
+    margin: 12px;
+    text-align: center;
+  }
+
+  &__button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px 40px;
+  }
+
+  &__section-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 12px 24px;
+
+    > div {
+      &:first-of-type {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+.error-msg {
+  display: flex;
+  margin: 6px 12px 18px;
+  font-size: 12px;
+  color: $danger;
+}

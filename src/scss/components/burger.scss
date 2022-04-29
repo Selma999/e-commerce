@@ -1,0 +1,41 @@
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+
+  div {
+    width: 2rem;
+    height: 2rem;
+    transition: all 0.3s linear;
+    background-color: $white;
+    border-top: 1px solid $black;
+    position: relative;
+    top: 2rem;
+  }
+
+  &.menuOpened {
+    div {
+      top: 2.5rem;
+    }
+    height: unset;
+    > div {
+      height: unset;
+      &:first-of-type {
+        transform: rotateZ(45deg);
+      }
+      &:nth-of-type(2) {
+        display: none;
+      }
+      &:last-of-type {
+        transform: rotateZ(-45deg);
+      }
+    }
+  }
+}

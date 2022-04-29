@@ -1,0 +1,51 @@
+.card {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  width: 250px;
+  height: 100%;
+  padding: 20px 20px 0;
+
+  &__description {
+    background-color: $white;
+    border-radius: 3px;
+    margin-bottom: 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 20px;
+    height: 350px;
+
+    > div {
+      &:first-of-type {
+        font-size: 12px;
+        line-height: 16px;
+      }
+      div {
+        &:last-of-type {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  &__img {
+    img {
+      height: 250px;
+    }
+  }
+
+  &__product {
+    &__details {
+      font-size: 12px;
+      padding: 6px 0;
+    }
+    &__code {
+      font-size: 12px;
+      padding: 6px 0;
+    }
+    &__price {
+      font-size: 12px;
+      padding: 6px 0;
+    }
+  }
+}

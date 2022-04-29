@@ -1,0 +1,14 @@
+.navigation {
+  display: flex;
+
+  > div {
+    align-self: center;
+    cursor: pointer;
+  }
+
+  &__burger {
+    display: none;
+    position: absolute;
+    top: 0;
+  }
+}

@@ -1,0 +1,44 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 24px;
+
+  background-color: $lightMint;
+  border-top: 0.5px solid $lightMint;
+  box-shadow: -0.2em 0 0.2em $mint;
+
+  &__section {
+    padding: 24px;
+    &__title {
+      text-transform: uppercase;
+      color: $black;
+      font-weight: 600;
+
+      &:hover {
+        color: $black;
+      }
+    }
+
+    &__items {
+      padding-top: 16px;
+    }
+
+    &__item {
+      padding: 8px 0;
+      color: $black;
+
+      &:hover {
+        color: $mint;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.footer-wrapper {
+  // position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
