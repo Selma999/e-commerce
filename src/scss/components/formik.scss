@@ -17,7 +17,7 @@
     border: none;
     border: 1px solid lightgrey;
     border-radius: 3px;
-    color: $mint;
+    color: $themeColor;
 
     &::placeholder {
       text-align: left;
@@ -25,17 +25,17 @@
     }
 
     &:focus {
-      outline: 2px solid $mint;
+      outline: 2px solid $themeColor;
       &::placeholder {
-        color: $mint;
+        color: $themeColor;
         font-weight: 600;
       }
     }
 
     &:hover {
-      border: 1px solid $mint;
+      border: 1px solid $themeColor;
       &::placeholder {
-        color: $mint;
+        color: $themeColor;
       }
     }
   }
@@ -56,10 +56,10 @@
     align-items: center;
     justify-content: center;
 
-    background-color: $lightMint;
-    border: 1px solid $lightMint;
+    background-color: $themeColorSecond;
+    border: 1px solid $themeColorSecond;
     border-radius: 3px;
-    color: $mint;
+    color: $themeColor;
     font-weight: 600;
 
     min-width: 250px;

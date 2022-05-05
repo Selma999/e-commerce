@@ -13,7 +13,7 @@ function Login() {
     e.preventDefault();
   };
   return (
-    <div>
+    <>
       {userExists ? (
         <Button
           icon={login}
@@ -24,7 +24,7 @@ function Login() {
       ) : (
         <Button buttonTitle="Create Account" onClick={goToCreateAccount} />
       )}
-    </div>
+    </>
   );
 }
 

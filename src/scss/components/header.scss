@@ -27,12 +27,12 @@
       display: flex;
       width: 30px;
       height: 30px;
-      color: $mint;
+      color: $themeColor;
     }
   }
 
   &__icon-cart {
-    padding: 24px;
+    margin: 24px;
   }
 
   &__search {
@@ -53,7 +53,7 @@
       display: flex;
       align-items: center;
 
-      border: 1px solid $mint;
+      border: 1px solid $themeColor;
       border-radius: 3px;
       input {
         display: flex;
@@ -68,7 +68,7 @@
         font-size: $fontSize;
 
         &::placeholder {
-          color: $mint;
+          color: $themeColor;
           padding-left: 24px;
         }
 
@@ -87,9 +87,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 16px;
 
     > div:first-of-type {
-      margin-right: 16px;
     }
   }
 
@@ -101,8 +101,6 @@
   }
 }
 
-.login-icon-wrapper {
-  img {
-    margin-left: 16px;
-  }
+.button-wrapper {
+  margin-left: 16px;
 }

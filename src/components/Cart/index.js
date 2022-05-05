@@ -6,6 +6,7 @@ import CardDescription from "../Card/CardDescription";
 import Button from "../../components/Button";
 
 function Cart(props) {
+  const empty = props.products.length === 0;
   const navigate = useNavigate();
   const clickCheckoutHandler = () => {
     navigate("/checkout");
@@ -14,6 +15,7 @@ function Cart(props) {
   return (
     <div className="product__container">
       <div className="cart">
+        {empty && <div className="empty__cart">You're cart is empty</div>}
         {props.products.map((product) => {
           const { title, price, image } = product;
           return (
@@ -28,7 +30,9 @@ function Cart(props) {
           );
         })}
       </div>
-      <Button buttonTitle="Checkout" onClick={clickCheckoutHandler} />
+      {!empty && (
+        <Button buttonTitle="Checkout" onClick={clickCheckoutHandler} />
+      )}
     </div>
   );
 }

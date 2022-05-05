@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+
 import CardDescription from "../Card/CardDescription";
+import Loader from "../Loader";
 
 import { fetchAllProductsFromCatalog } from "../../Redux/Actions/Catalog";
 
 function Product(props) {
   console.log(props);
   const { id, productCode, price, image } = props;
+  const [inProgress, setInProgress] = useState(false);
 
   const { productId } = useParams();
   const dispatch = useDispatch();
@@ -27,27 +30,35 @@ function Product(props) {
   };
 
   useEffect(async () => {
+    if (inProgress) return;
+
     try {
       if (productId && productId !== "") await fetchSingleProduct(productId);
+      setInProgress(true);
     } catch (err) {
       console.log(err);
+    } finally {
+      setInProgress(false);
     }
   }, [productId]);
 
   return (
-    <div key={id}>
-      <Link to={`/product/${id}`}>
-        <div>Shopping cart</div>
-        <CardDescription
-          productCode={productCode}
-          productPrice={price}
-          src={image}
-        />
-        <div>Price</div>
-        <div>Quantity</div>
-        <div>Total</div>
-      </Link>
-    </div>
+    <>
+      {inProgress && <Loader />}
+      <div key={id}>
+        <Link to={`/product/${id}`}>
+          <div>Shopping cart</div>
+          <CardDescription
+            productCode={productCode}
+            productPrice={price}
+            src={image}
+          />
+          <div>Price</div>
+          <div>Quantity</div>
+          <div>Total</div>
+        </Link>
+      </div>
+    </>
   );
 }
 

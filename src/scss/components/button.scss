@@ -13,10 +13,10 @@
   font-size: $fontSize;
   font-family: $fontFamily;
 
-  background-color: $lightMint;
-  border: 1px solid $lightMint;
+  background-color: $themeColorSecond;
+  border: 1px solid $themeColorSecond;
   border-radius: 3px;
-  color: $mint;
+  color: $themeColor;
   font-weight: 600;
   cursor: pointer;
 }

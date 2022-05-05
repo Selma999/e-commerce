@@ -49,3 +49,15 @@
     }
   }
 }
+
+.empty {
+  &__cart {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+    color: $themeColor;
+  }
+}
