@@ -34,7 +34,7 @@ function Cart(props) {
       {!empty && (
         <>
           <Button buttonTitle="Checkout" onClick={clickCheckoutHandler} />
-          <Button buttonTitle={props.countProducts} />
+          {/* <Button buttonTitle={props.countProducts} /> */}
         </>
       )}
     </div>
