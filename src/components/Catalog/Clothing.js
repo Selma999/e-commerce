@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -43,17 +43,18 @@ const Clothing = (props) => {
       />
       <div className="catalog__product-list">
         {props.products?.map((product) => {
-          const { productCode, title, price, image, id } = product;
+          const { productCode, price, image, id } = product;
           return (
             <Card key={id}>
               <CardDescription
+                product={product}
                 productCode={productCode}
                 productPrice={price}
-                productDetails={title}
                 onClick={() => {
                   productClickHandler(product);
                 }}
                 src={image}
+                addChekoutButtons
               />
             </Card>
           );

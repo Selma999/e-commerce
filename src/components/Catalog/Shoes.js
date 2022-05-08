@@ -43,11 +43,12 @@ const Shoes = () => {
           const { productDetails, productCode, productPrice, src } = product;
           return (
             <CardDescription
+              product={product}
               productDetails={productDetails}
               productCode={productCode}
               productPrice={productPrice}
               src={src}
-            /> 
+            />
           );
         })}
       </Card>
@@ -56,6 +57,7 @@ const Shoes = () => {
           const { productDetails, productCode, productPrice, src } = product;
           return (
             <CardDescription
+              product={product}
               productDetails={productDetails}
               productCode={productCode}
               productPrice={productPrice}

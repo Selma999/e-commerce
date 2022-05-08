@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -19,9 +19,11 @@ import {
   updateJeweleryProducts,
   updateAllProducts,
 } from "../../Redux/Actions/Category";
+import Loader from "../Loader";
 
 const Categories = (props) => {
   const { label } = useParams();
+  const [inProgress, setInProgress] = useState(false);
 
   let list = [];
 
@@ -36,6 +38,7 @@ const Categories = (props) => {
   const navigate = useNavigate();
 
   useEffect(async () => {
+    if (inProgress) return;
     try {
       if (label === "electronics") {
         await props.getCategoryElectronics();
@@ -46,6 +49,9 @@ const Categories = (props) => {
       }
     } catch (err) {
       console.log(err);
+      setInProgress(true);
+    } finally {
+      setInProgress(false);
     }
   }, [label]);
 
@@ -80,11 +86,13 @@ const Categories = (props) => {
         onClick={sortProductsByPrice}
       />
       <div className="catalog__product-list">
+        {inProgress && <Loader />}
         {list?.map((product) => {
           const { productCode, title, price, image, id } = product;
           return (
             <Card key={id}>
               <CardDescription
+                product={product}
                 productCode={productCode}
                 productPrice={price}
                 productDetails={title}
@@ -92,6 +100,7 @@ const Categories = (props) => {
                   productClickHandler(product);
                 }}
                 src={image}
+                addChekoutButtons
               />
             </Card>
           );

@@ -49,9 +49,11 @@ function Product(props) {
         <Link to={`/product/${id}`}>
           <div>Shopping cart</div>
           <CardDescription
+            product={props.product}
             productCode={productCode}
             productPrice={price}
             src={image}
+            addChekoutButtons
           />
           <div>Price</div>
           <div>Quantity</div>

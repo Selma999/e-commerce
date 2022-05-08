@@ -31,29 +31,31 @@
     border: none;
 
     > div {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 40px;
+      &:not(:last-of-type) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 40px;
 
-      > div {
-        &:first-of-type {
-          font-size: 18px;
-          font-weight: 600;
-          line-height: 20px;
-        }
-        &:last-of-type {
-          font-size: 16px;
+        > div {
+          &:first-of-type {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 20px;
+          }
+          &:last-of-type {
+            font-size: 16px;
+          }
         }
       }
     }
   }
 
   &__details {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
     padding: 40px;
-    width: 900px;
+    // width: 900px;
 
     > div {
       div {
@@ -79,6 +81,17 @@
       &:first-of-type {
         margin-bottom: 16px;
       }
+    }
+  }
+
+  &__buttons-wrapper {
+    padding: 10px;
+  }
+
+  &__button {
+    &__add,
+    &__checkout {
+      background-color: transparent;
     }
   }
 }

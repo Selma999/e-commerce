@@ -142,6 +142,7 @@ function Checkout(props) {
                       <FormikInput
                         id="password"
                         name="password"
+                        type="password"
                         placeholder="Enter password"
                       />
                       <ErrorMessage

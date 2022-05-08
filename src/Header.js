@@ -1,14 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
 
-import Login from "./components/Login";
 import Navigation from "./components/Navigation";
 import Search from "./components/Search";
 import Cart from "./assets/img/cart.png";
 
-function Header() {
+function Header(props) {
   const navigate = useNavigate();
-  const isLogged = false;
 
   const clickedCartHandler = () => {
     navigate("/cart");
@@ -17,17 +16,29 @@ function Header() {
   return (
     <div className="header">
       <div className="header__first-group">
-        <Navigation responsiveMode={false} />
+        <Navigation />
       </div>
       <div className="header__second-group">
         <Search />
-        <div className="header__icon-cart" onClick={clickedCartHandler}>
-          <img src={Cart} alt="" />
-        </div>
-        {!isLogged && <Login />}
+        <ul className="header__cart-wrapper-badge">
+          <li
+            data-badge={props.countProducts}
+            className="header__icon-cart"
+            onClick={clickedCartHandler}
+          >
+            <img src={Cart} alt="" />
+          </li>
+        </ul>
+        {/* {!isLogged && <Login />} */}
       </div>
     </div>
   );
 }
 
-export default Header;
+const mapStateToProps = (store) => {
+  return {
+    countProducts: store.cart.totalCount,
+  };
+};
+
+export default connect(mapStateToProps, {})(Header);

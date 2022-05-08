@@ -15,12 +15,13 @@ function Cart(props) {
   return (
     <div className="product__container">
       <div className="cart">
-        {empty && <div className="empty__cart">You're cart is empty</div>}
+        {empty && <div className="empty__cart">Your cart is empty</div>}
         {props.products.map((product) => {
           const { title, price, image } = product;
           return (
             <div key={product.id} className="product">
               <CardDescription
+                product={product}
                 productDetails={title}
                 productPrice={price}
                 src={image}
@@ -31,7 +32,10 @@ function Cart(props) {
         })}
       </div>
       {!empty && (
-        <Button buttonTitle="Checkout" onClick={clickCheckoutHandler} />
+        <>
+          <Button buttonTitle="Checkout" onClick={clickCheckoutHandler} />
+          <Button buttonTitle={props.countProducts} />
+        </>
       )}
     </div>
   );
@@ -40,6 +44,7 @@ function Cart(props) {
 const mapStateToProps = (store) => {
   return {
     products: store.cart.products,
+    countProducts: store.cart.totalCount,
   };
 };
 

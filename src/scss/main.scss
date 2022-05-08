@@ -85,7 +85,8 @@ code {
 
   .navigation {
     &__logo {
-      display: none;
+      display: flex;
+      margin-left: 56px;
     }
 
     &__burger {
@@ -129,7 +130,7 @@ code {
       justify-content: center;
     }
     &__description {
-      width: 400px;
+      width: 500px;
     }
   }
 
@@ -186,7 +187,7 @@ code {
 
   .card {
     &__description {
-      width: 300px;
+      width: 450px;
       height: unset;
     }
   }

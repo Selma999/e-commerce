@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Button from "../../components/Button";
@@ -8,9 +8,11 @@ import Footer from "../../Footer";
 import Header from "../../Header";
 import { addProductToCart } from "../../Redux/Actions/Product";
 import { toast } from "react-toastify";
+import { setIn } from "formik";
+import Loader from "../../components/Loader";
 
 const ProductDetailsPage = (props) => {
-  console.log(props);
+  const [inProgress, setInProgress] = useState(false);
   const { product } = props;
   const { productId } = useParams();
 
@@ -46,10 +48,14 @@ const ProductDetailsPage = (props) => {
   };
 
   useEffect(async () => {
+    if (inProgress) return;
     try {
       if (productId && productId !== "") await fetchSingleProduct(productId);
     } catch (err) {
       console.log(err);
+      setInProgress(true);
+    } finally {
+      setInProgress(false);
     }
   }, []);
 
@@ -61,18 +67,21 @@ const ProductDetailsPage = (props) => {
     <div>
       <Header />
       <div className="product__container">
+        {inProgress && <Loader />}
         <Container>
           <CardDescription
+            product={product}
             productCode={productCode}
             productPrice={price}
             productDetails={title}
             src={image}
             className="product__description"
+            addChekoutButtons
           />
-          <div className="product__buttons-wrapper">
+          {/* <div className="product__buttons-wrapper">
             <Button buttonTitle="Checkout" onClick={clickCheckoutHandler} />
             <Button buttonTitle="Add to Cart" onClick={addToCart} />
-          </div>
+          </div> */}
         </Container>
       </div>
       <Footer />

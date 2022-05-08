@@ -5,7 +5,6 @@ import Header from "../../Header";
 import Footer from "../../Footer";
 import Cart from "../../components/Cart";
 import Container from "../../components/Container";
-import Product from "../../components/ProductGroupTitle/Product";
 
 const CartPage = () => {
   return (
