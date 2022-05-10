@@ -1,11 +1,14 @@
 .purchased {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 250px 0;
+  margin: 40px;
   p {
+    text-align: center;
     font-size: 32px;
     font-weight: 800;
     line-height: 48px;
     color: $themeColor;
+    padding: 10px 0;
   }
 }

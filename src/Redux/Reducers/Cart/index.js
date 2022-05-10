@@ -1,9 +1,17 @@
-const initialState = {
-  products: [],
-  totalCount: 0,
-};
+let initialState = JSON.parse(localStorage.getItem("cartState"));
+
+if (!initialState) {
+  initialState = {
+    products: [],
+    totalCount: 0,
+  };
+}
+
+console.log("initialState:", initialState);
 
 function cartReducer(state = initialState, action) {
+  let updatedState;
+
   switch (action.type) {
     case "ADD_PRODUCT_TO_CART": {
       const cartProducts = [...state.products];
@@ -20,7 +28,6 @@ function cartReducer(state = initialState, action) {
         }
       }
 
-      debugger;
       if (!foundProduct) {
         let product = { ...action.payload, productCount: 1 };
         cartProducts.push(product);
@@ -31,15 +38,23 @@ function cartReducer(state = initialState, action) {
       const countProductsInCart = totalCount + 1;
       console.log("totalCount", countProductsInCart);
 
-      return {
+      updatedState = {
         ...state,
         products: cartProducts,
         totalCount: countProductsInCart,
       };
+      break;
     }
-    default:
-      return state;
+
+    default: {
+      updatedState = state;
+      break;
+    }
   }
+
+  localStorage.setItem("cartState", JSON.stringify(updatedState));
+
+  return updatedState;
 }
 
 export default cartReducer;

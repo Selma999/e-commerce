@@ -49,6 +49,10 @@
           }
         }
       }
+      &:not(:nth-last-of-type(3)) {
+        padding: 20px 25px 0;
+        margin: 40px;
+      }
     }
   }
 

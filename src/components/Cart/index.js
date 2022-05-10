@@ -11,11 +11,19 @@ function Cart(props) {
   const clickCheckoutHandler = () => {
     navigate("/checkout");
   };
+  const goToCatalog = () => {
+    navigate("/catalog/clothing");
+  };
 
   return (
     <div className="product__container">
       <div className="cart">
-        {empty && <div className="empty__cart">Your cart is empty</div>}
+        {empty && (
+          <>
+            <div className="empty__cart">Your cart is empty</div>
+            <Button onClick={goToCatalog} buttonTitle="Go to Catalog" />
+          </>
+        )}
         {props.products.map((product) => {
           const { title, price, image } = product;
           return (

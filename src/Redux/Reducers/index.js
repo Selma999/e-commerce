@@ -5,6 +5,7 @@ import paymentReducer from "./Payment";
 import productReducer from "./Product";
 import cartReducer from "./Cart";
 import categoriesReducer from "./Categories";
+import checkoutReducer from "./Checkout";
 
 const rootReducer = combineReducers({
   login: loginReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   payment: paymentReducer,
   cart: cartReducer,
   categories: categoriesReducer,
+  checkout: checkoutReducer,
 });
 
 export default rootReducer;

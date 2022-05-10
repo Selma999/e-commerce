@@ -1,14 +1,40 @@
 import React from "react";
+import { connect } from "react-redux";
 import Container from "../Container";
+import CardDescription from "../Card/CardDescription";
 
-const PurchasedSuccessful = () => {
+const PurchasedSuccessful = (props) => {
+  console.log("purchased", props.products);
   return (
     <Container>
       <div className="purchased">
-        <p>You have successfuly made a purchase!</p>
+        <p>You have successfully made a purchase!</p>
+        <p>Product(s) you purchased:</p>
+        <div>
+          {props.products?.map((product) => {
+            const { title, price, image } = product;
+            return (
+              <div key={product.id} className="product">
+                <CardDescription
+                  product={product}
+                  productDetails={title}
+                  productPrice={price}
+                  src={image}
+                  className="product__details"
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Container>
   );
 };
 
-export default PurchasedSuccessful;
+const mapStateToProps = (store) => {
+  return {
+    products: store.cart.products,
+  };
+};
+
+export default connect(mapStateToProps, {})(PurchasedSuccessful);

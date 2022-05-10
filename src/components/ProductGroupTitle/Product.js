@@ -34,9 +34,9 @@ function Product(props) {
 
     try {
       if (productId && productId !== "") await fetchSingleProduct(productId);
-      setInProgress(true);
     } catch (err) {
       console.log(err);
+      setInProgress(true);
     } finally {
       setInProgress(false);
     }

@@ -8,7 +8,6 @@ import Footer from "../../Footer";
 import Header from "../../Header";
 import { addProductToCart } from "../../Redux/Actions/Product";
 import { toast } from "react-toastify";
-import { setIn } from "formik";
 import Loader from "../../components/Loader";
 
 const ProductDetailsPage = (props) => {
@@ -49,11 +48,14 @@ const ProductDetailsPage = (props) => {
 
   useEffect(async () => {
     if (inProgress) return;
+
     try {
-      if (productId && productId !== "") await fetchSingleProduct(productId);
+      setInProgress(true);
+      if (productId && productId !== "") {
+        await fetchSingleProduct(productId);
+      }
     } catch (err) {
       console.log(err);
-      setInProgress(true);
     } finally {
       setInProgress(false);
     }
@@ -67,21 +69,26 @@ const ProductDetailsPage = (props) => {
     <div>
       <Header />
       <div className="product__container">
-        {inProgress && <Loader />}
         <Container>
-          <CardDescription
-            product={product}
-            productCode={productCode}
-            productPrice={price}
-            productDetails={title}
-            src={image}
-            className="product__description"
-            addChekoutButtons
-          />
-          {/* <div className="product__buttons-wrapper">
+          {inProgress ? (
+            <Loader />
+          ) : (
+            <>
+              <CardDescription
+                product={product}
+                productCode={productCode}
+                productPrice={price}
+                productDetails={title}
+                src={image}
+                className="product__description"
+                addChekoutButtons
+              />
+              {/* <div className="product__buttons-wrapper">
             <Button buttonTitle="Checkout" onClick={clickCheckoutHandler} />
             <Button buttonTitle="Add to Cart" onClick={addToCart} />
           </div> */}
+            </>
+          )}
         </Container>
       </div>
       <Footer />
