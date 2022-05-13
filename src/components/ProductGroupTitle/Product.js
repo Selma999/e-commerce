@@ -6,9 +6,9 @@ import CardDescription from "../Card/CardDescription";
 import Loader from "../Loader";
 
 import { fetchAllProductsFromCatalog } from "../../Redux/Actions/Catalog";
+import { deleteProductFromCart } from "../../Redux/Actions/Product";
 
 function Product(props) {
-  console.log(props);
   const { id, productCode, price, image } = props;
   const [inProgress, setInProgress] = useState(false);
 
@@ -29,14 +29,28 @@ function Product(props) {
     return response;
   };
 
+  const deleteFromCart = (id) => {
+    if (inProgress) return;
+
+    try {
+      setInProgress(true);
+      props.deleteProductFromCart(id);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setInProgress(false);
+    }
+  };
+
   useEffect(async () => {
     if (inProgress) return;
 
     try {
+      setInProgress(true);
+
       if (productId && productId !== "") await fetchSingleProduct(productId);
     } catch (err) {
       console.log(err);
-      setInProgress(true);
     } finally {
       setInProgress(false);
     }
@@ -70,4 +84,5 @@ const mapStateToProps = (store) => {
 
 export default connect(mapStateToProps, {
   getProducts: fetchAllProductsFromCatalog,
+  deleteProductFromCart,
 })(Product);

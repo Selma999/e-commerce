@@ -4,7 +4,6 @@ import Container from "../Container";
 import CardDescription from "../Card/CardDescription";
 
 const PurchasedSuccessful = (props) => {
-  console.log("purchased", props.products);
   return (
     <Container>
       <div className="purchased">

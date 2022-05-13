@@ -57,6 +57,7 @@
         height: $headerHeight;
         width: 100%;
         padding: unset;
+        margin-left: 20px;
 
         border: none;
 
@@ -123,5 +124,16 @@
         border: solid 1px $themeColorSecond;
       }
     }
+  }
+}
+
+.search {
+  &__results {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 100vh;
   }
 }

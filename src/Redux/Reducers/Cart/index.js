@@ -7,7 +7,7 @@ if (!initialState) {
   };
 }
 
-console.log("initialState:", initialState);
+// console.log("initialState:", initialState);
 
 function cartReducer(state = initialState, action) {
   let updatedState;
@@ -17,12 +17,8 @@ function cartReducer(state = initialState, action) {
       const cartProducts = [...state.products];
       let totalCount = state.totalCount;
 
-      console.log("cartProducts", cartProducts);
-      console.log("product", action.payload);
-
       let foundProduct;
       for (let i = 0; i < cartProducts.length; i++) {
-        console.log("action payload", action.payload.id);
         if (cartProducts[i].id === action.payload.id) {
           foundProduct = cartProducts[i];
         }
@@ -36,11 +32,35 @@ function cartReducer(state = initialState, action) {
       }
 
       const countProductsInCart = totalCount + 1;
-      console.log("totalCount", countProductsInCart);
 
       updatedState = {
         ...state,
         products: cartProducts,
+        totalCount: countProductsInCart,
+      };
+      break;
+    }
+    case "DELETE_PRODUCT_FROM_CART": {
+      let products = [...state.products];
+      let totalCount = state.totalCount;
+      let foundProduct;
+      for (let i = 0; i < products.length; i++) {
+        if (products[i].id === action.payload.id) {
+          foundProduct = products[i];
+        }
+      }
+
+      foundProduct.productCount--;
+
+      if (foundProduct.productCount === 0) {
+        products = products.filter(({ id }) => id !== action.payload.id);
+      }
+
+      const countProductsInCart = totalCount - 1;
+
+      updatedState = {
+        ...state,
+        products,
         totalCount: countProductsInCart,
       };
       break;

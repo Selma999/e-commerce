@@ -48,6 +48,7 @@ const Shoes = () => {
               productCode={productCode}
               productPrice={productPrice}
               src={src}
+              showDeleteButton
             />
           );
         })}
@@ -62,6 +63,7 @@ const Shoes = () => {
               productCode={productCode}
               productPrice={productPrice}
               src={src}
+              showDeleteButton
             />
           );
         })}

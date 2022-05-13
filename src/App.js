@@ -7,7 +7,6 @@ import Loader from "./components/Loader";
 
 import "react-toastify/dist/ReactToastify.css";
 
-const Page404 = lazy(() => import("./Screens/Error404"));
 const HomePage = lazy(() => import("./Screens/HomePage"));
 const LoginPage = lazy(() => import("./Screens/LoginPage"));
 const Catalog = lazy(() => import("./Screens/Catalog"));
@@ -18,6 +17,7 @@ const CartPage = lazy(() => import("./Screens/CartPage"));
 const ProductDetails = lazy(() => import("./Screens/ProductDetails"));
 const Categories = lazy(() => import("./Screens/Categories"));
 const Purchased = lazy(() => import("./Screens/Purchased"));
+const SearchResultsPage = lazy(() => import("./Screens/SearchResultsPage"));
 
 function App() {
   return (
@@ -100,6 +100,14 @@ function App() {
           element={
             <React.Suspense fallback={<Loader />}>
               <Purchased />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/search-results"
+          element={
+            <React.Suspense fallback={<Loader />}>
+              <SearchResultsPage />
             </React.Suspense>
           }
         />

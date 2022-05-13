@@ -6,7 +6,10 @@ import { connect } from "react-redux";
 
 import Button from "../Button";
 
-import { addProductToCart } from "../../Redux/Actions/Product";
+import {
+  addProductToCart,
+  deleteProductFromCart,
+} from "../../Redux/Actions/Product";
 import Loader from "../Loader";
 
 const CardDescription = (props) => {
@@ -17,10 +20,12 @@ const CardDescription = (props) => {
     onClick,
     src,
     product,
+    showDeleteButton,
     addChekoutButtons,
   } = props;
 
   const [inProgress, setInProgress] = useState(false);
+
   const navigate = useNavigate();
   const clickViewProduct = () => {
     navigate("/checkout");
@@ -29,10 +34,23 @@ const CardDescription = (props) => {
   const addToCart = () => {
     if (inProgress) return;
     try {
+      setInProgress(true);
       props.addProductToCart(product);
       toast.success("You've added this product to cart.");
     } catch (err) {
+      console.log(err);
+    } finally {
+      setInProgress(false);
+    }
+  };
+
+  const deleteFromCart = () => {
+    if (inProgress) return;
+    try {
       setInProgress(true);
+      props.deleteProductFromCart(product, product.id);
+      console.log("product, productId", product, product.id);
+    } catch (err) {
       console.log(err);
     } finally {
       setInProgress(false);
@@ -75,6 +93,13 @@ const CardDescription = (props) => {
             </div>
           </>
         )}
+        {showDeleteButton && (
+          <>
+            <div>
+              <Button buttonTitle="Delete product" onClick={deleteFromCart} />
+            </div>
+          </>
+        )}
       </div>
     </>
   );
@@ -99,4 +124,5 @@ const mapStateToProps = (store, ownProps) => {
 
 export default connect(mapStateToProps, {
   addProductToCart,
+  deleteProductFromCart,
 })(CardDescription);

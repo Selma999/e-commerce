@@ -18,7 +18,6 @@ function Menu(props) {
   useEffect(async () => {
     try {
       await props.getCategories();
-      console.log("categories:", props.categories);
     } catch (err) {
       console.log(err);
     }

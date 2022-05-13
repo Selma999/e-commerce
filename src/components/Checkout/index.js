@@ -82,8 +82,6 @@ function Checkout(props) {
     country: "",
   };
 
-  console.log(props.form);
-
   return (
     <div className="cart">
       <Formik

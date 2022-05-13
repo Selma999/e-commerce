@@ -40,6 +40,8 @@ const Categories = (props) => {
   useEffect(async () => {
     if (inProgress) return;
     try {
+      setInProgress(true);
+      
       if (label === "electronics") {
         await props.getCategoryElectronics();
       } else if (label === "jewelery") {
@@ -49,7 +51,6 @@ const Categories = (props) => {
       }
     } catch (err) {
       console.log(err);
-      setInProgress(true);
     } finally {
       setInProgress(false);
     }

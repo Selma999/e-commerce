@@ -9,7 +9,7 @@ export function addProductToCart(product) {
   };
 }
 
-export function deleteProductFromCart(id) {
+export function deleteProductFromCart(product, id) {
   return async (dispatch) => {
     // Call the API
     await fetch(`https://fakestoreapi.com/products/${id}`, {
@@ -18,6 +18,7 @@ export function deleteProductFromCart(id) {
 
     dispatch({
       type: "DELETE_PRODUCT_FROM_CART",
+      payload: product,
     });
   };
 }

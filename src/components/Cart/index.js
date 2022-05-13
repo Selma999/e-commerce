@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 import CardDescription from "../Card/CardDescription";
 import Button from "../../components/Button";
 
+import { deleteProductFromCart } from "../../Redux/Actions/Product";
+
 function Cart(props) {
   const empty = props.products.length === 0;
+
   const navigate = useNavigate();
   const clickCheckoutHandler = () => {
     navigate("/checkout");
@@ -34,6 +37,7 @@ function Cart(props) {
                 productPrice={price}
                 src={image}
                 className="product__details"
+                showDeleteButton
               />
             </div>
           );
@@ -56,4 +60,4 @@ const mapStateToProps = (store) => {
   };
 };
 
-export default connect(mapStateToProps, {})(Cart);
+export default connect(mapStateToProps, { deleteProductFromCart })(Cart);

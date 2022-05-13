@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-function Search() {
+import { getAllProducts } from "../../Redux/Actions/Category";
+
+function Search(props) {
   const [searchClicked, setSearchClicked] = useState(false);
+  const [inProgress, setInProgress] = useState(false);
+
+  const navigate = useNavigate();
   const clickSearchHandler = () => {
     setSearchClicked(true);
   };
@@ -9,6 +16,46 @@ function Search() {
   const closeSearchHandler = () => {
     setSearchClicked(false);
   };
+
+  useEffect(async () => {
+    if (inProgress) return;
+    try {
+      setInProgress(true);
+
+      await props.getAllProducts();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setInProgress(false);
+    }
+  }, []);
+
+  const getInputValue = (e) => {
+    const inputValue = e.target.value;
+    console.log("input value is:", inputValue);
+    console.log("products:", props.allProducts);
+    const productsToString = JSON.stringify(props.allProducts);
+    console.log("stringified", productsToString);
+
+    productsToString.filter((item) => {
+      if (productsToString.includes(inputValue)) {
+        console.log("matches", productsToString.includes(inputValue));
+      }
+    });
+  };
+
+  // const filterSearchResults = () => {
+  //   const inputValue = getInputValue();
+  //   console.log("iinput value in search", inputValue);
+  // };
+
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
+      navigate("/search-results");
+      console.log("pressed:", e.key);
+    }
+  };
+
   return (
     <div
       className={
@@ -50,7 +97,12 @@ function Search() {
       </div>
       {searchClicked && (
         <div className="header__search__input">
-          <input type="text" placeholder="Find products" />
+          <input
+            type="text"
+            placeholder="Find products"
+            onChange={getInputValue}
+            onKeyPress={onKeyPress}
+          />
           <div onClick={closeSearchHandler}>
             <svg
               width="24"
@@ -81,4 +133,12 @@ function Search() {
   );
 }
 
-export default Search;
+const mapStateToProps = (store) => {
+  return {
+    allProducts: store.categories.allProducts,
+  };
+};
+
+export default connect(mapStateToProps, {
+  getAllProducts,
+})(Search);

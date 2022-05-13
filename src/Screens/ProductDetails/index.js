@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import Button from "../../components/Button";
+import { useParams } from "react-router-dom";
+
 import CardDescription from "../../components/Card/CardDescription";
 import Container from "../../components/Container";
 import Footer from "../../Footer";
 import Header from "../../Header";
-import { addProductToCart } from "../../Redux/Actions/Product";
-import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
+import Button from "../../components/Button";
+
+import { addProductToCart } from "../../Redux/Actions/Product";
+import { deleteProductFromCart } from "../../Redux/Actions/Product";
 
 const ProductDetailsPage = (props) => {
   const [inProgress, setInProgress] = useState(false);
@@ -16,7 +18,6 @@ const ProductDetailsPage = (props) => {
   const { productId } = useParams();
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const fetchSingleProduct = async (id) => {
     // Call the API
@@ -33,16 +34,29 @@ const ProductDetailsPage = (props) => {
     return product;
   };
 
-  const clickCheckoutHandler = () => {
-    navigate("/checkout");
-  };
+  // const clickCheckoutHandler = () => {
+  //   navigate("/checkout");
+  // };
 
-  const addToCart = () => {
+  // const addToCart = () => {
+  //   try {
+  //     props.addProductToCart(product);
+  //     toast.success("You've added this product to cart.");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  const deleteFromCart = () => {
+    if (inProgress) return;
     try {
-      props.addProductToCart(product);
-      toast.success("You've added this product to cart.");
+      setInProgress(true);
+      debugger;
+      props.deleteProductFromCart(product, productId);
     } catch (err) {
       console.log(err);
+    } finally {
+      setInProgress(false);
     }
   };
 
@@ -69,7 +83,7 @@ const ProductDetailsPage = (props) => {
     <div>
       <Header />
       <div className="product__container">
-        <Container>
+        <Container className="product-container">
           {inProgress ? (
             <Loader />
           ) : (
@@ -83,10 +97,9 @@ const ProductDetailsPage = (props) => {
                 className="product__description"
                 addChekoutButtons
               />
-              {/* <div className="product__buttons-wrapper">
-            <Button buttonTitle="Checkout" onClick={clickCheckoutHandler} />
-            <Button buttonTitle="Add to Cart" onClick={addToCart} />
-          </div> */}
+              <div>
+                <Button buttonTitle="Delete product" onClick={deleteFromCart} />
+              </div>
             </>
           )}
         </Container>
@@ -103,4 +116,5 @@ const mapStateToProps = (store) => {
 };
 export default connect(mapStateToProps, {
   addProductToCart,
+  deleteProductFromCart,
 })(ProductDetailsPage);
