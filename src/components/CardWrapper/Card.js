@@ -49,7 +49,6 @@ const Card = (props) => {
     try {
       setInProgress(true);
       props.deleteProductFromCart(product, product.id);
-      console.log("product, productId", product, product.id);
     } catch (err) {
       console.log(err);
     } finally {

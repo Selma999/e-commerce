@@ -6,7 +6,6 @@ import Card from "../CardWrapper/Card";
 import { saveSearchResults } from "../../Redux/Actions/Search";
 
 function SearchResults(props) {
-  console.log("results", props.results);
   return (
     <div className="search__results">
       <p>Search Results:</p>

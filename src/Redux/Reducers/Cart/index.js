@@ -7,8 +7,6 @@ if (!initialState) {
   };
 }
 
-// console.log("initialState:", initialState);
-
 function cartReducer(state = initialState, action) {
   let updatedState;
 

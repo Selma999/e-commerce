@@ -67,7 +67,6 @@ function Search(props) {
   function onKeyPress(e) {
     if (e.key === "Enter") {
       navigate("/search-results");
-      console.log("pressed:", e.key);
     }
   }
 
