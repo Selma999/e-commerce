@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import CardDescription from "../../components/Card/CardDescription";
+import Card from "../../components/CardWrapper/Card";
 import Container from "../../components/Container";
 import Footer from "../../Footer";
 import Header from "../../Header";
@@ -34,24 +34,10 @@ const ProductDetailsPage = (props) => {
     return product;
   };
 
-  // const clickCheckoutHandler = () => {
-  //   navigate("/checkout");
-  // };
-
-  // const addToCart = () => {
-  //   try {
-  //     props.addProductToCart(product);
-  //     toast.success("You've added this product to cart.");
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   const deleteFromCart = () => {
     if (inProgress) return;
     try {
       setInProgress(true);
-      debugger;
       props.deleteProductFromCart(product, productId);
     } catch (err) {
       console.log(err);
@@ -88,7 +74,7 @@ const ProductDetailsPage = (props) => {
             <Loader />
           ) : (
             <>
-              <CardDescription
+              <Card
                 product={product}
                 productCode={productCode}
                 productPrice={price}

@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import Card from "../Card";
-import CardDescription from "../Card/CardDescription";
+import CardWrapper from "../CardWrapper";
+import Card from "../CardWrapper/Card";
 import ProductGroupTitle from "../ProductGroupTitle";
 import Button from "../Button";
 
@@ -45,8 +45,8 @@ const Clothing = (props) => {
         {props.products?.map((product) => {
           const { productCode, price, image, id } = product;
           return (
-            <Card key={id}>
-              <CardDescription
+            <CardWrapper key={id}>
+              <Card
                 product={product}
                 productCode={productCode}
                 productPrice={price}
@@ -56,7 +56,7 @@ const Clothing = (props) => {
                 src={image}
                 addChekoutButtons
               />
-            </Card>
+            </CardWrapper>
           );
         })}
       </div>

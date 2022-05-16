@@ -12,7 +12,7 @@ import {
 } from "../../Redux/Actions/Product";
 import Loader from "../Loader";
 
-const CardDescription = (props) => {
+const Card = (props) => {
   const {
     className,
     productDetails,
@@ -125,4 +125,4 @@ const mapStateToProps = (store, ownProps) => {
 export default connect(mapStateToProps, {
   addProductToCart,
   deleteProductFromCart,
-})(CardDescription);
+})(Card);

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Container from "../Container";
-import CardDescription from "../Card/CardDescription";
+import Card from "../CardWrapper/Card";
 
 const PurchasedSuccessful = (props) => {
   return (
@@ -14,7 +14,7 @@ const PurchasedSuccessful = (props) => {
             const { title, price, image } = product;
             return (
               <div key={product.id} className="product">
-                <CardDescription
+                <Card
                   product={product}
                   productDetails={title}
                   productPrice={price}

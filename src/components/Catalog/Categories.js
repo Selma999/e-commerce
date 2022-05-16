@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import Card from "../Card";
-import CardDescription from "../Card/CardDescription";
+import CardWrapper from "../CardWrapper";
+import Card from "../CardWrapper/Card";
 import ProductGroupTitle from "../ProductGroupTitle";
 import Button from "../Button";
 
@@ -41,7 +41,7 @@ const Categories = (props) => {
     if (inProgress) return;
     try {
       setInProgress(true);
-      
+
       if (label === "electronics") {
         await props.getCategoryElectronics();
       } else if (label === "jewelery") {
@@ -91,8 +91,8 @@ const Categories = (props) => {
         {list?.map((product) => {
           const { productCode, title, price, image, id } = product;
           return (
-            <Card key={id}>
-              <CardDescription
+            <CardWrapper key={id}>
+              <Card
                 product={product}
                 productCode={productCode}
                 productPrice={price}
@@ -103,7 +103,7 @@ const Categories = (props) => {
                 src={image}
                 addChekoutButtons
               />
-            </Card>
+            </CardWrapper>
           );
         })}
       </div>

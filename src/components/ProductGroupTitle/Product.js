@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
-import CardDescription from "../Card/CardDescription";
+import Card from "../CardWrapper/Card";
 import Loader from "../Loader";
 
 import { fetchAllProductsFromCatalog } from "../../Redux/Actions/Catalog";
@@ -62,7 +62,7 @@ function Product(props) {
       <div key={id}>
         <Link to={`/product/${id}`}>
           <div>Shopping cart</div>
-          <CardDescription
+          <Card
             product={props.product}
             productCode={productCode}
             productPrice={price}

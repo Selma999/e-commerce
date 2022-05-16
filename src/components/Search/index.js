@@ -3,6 +3,23 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { getAllProducts } from "../../Redux/Actions/Category";
+import { saveSearchResults } from "../../Redux/Actions/Search";
+
+function objToString(obj) {
+  const values = Object.values(obj);
+
+  let str = "";
+
+  for (const val of values) {
+    if (typeof val === "object") {
+      str += objToString(val);
+    } else {
+      str += val;
+    }
+  }
+
+  return str.toLowerCase();
+}
 
 function Search(props) {
   const [searchClicked, setSearchClicked] = useState(false);
@@ -31,30 +48,28 @@ function Search(props) {
   }, []);
 
   const getInputValue = (e) => {
-    const inputValue = e.target.value;
-    console.log("input value is:", inputValue);
-    console.log("products:", props.allProducts);
-    const productsToString = JSON.stringify(props.allProducts);
-    console.log("stringified", productsToString);
+    const inputValue = e.target.value?.toString().toLowerCase();
 
-    productsToString.filter((item) => {
-      if (productsToString.includes(inputValue)) {
-        console.log("matches", productsToString.includes(inputValue));
-      }
+    const searchArr = props.allProducts?.map((product) => {
+      return {
+        id: product.id,
+        string: objToString(product),
+      };
     });
+
+    const searchResults = searchArr
+      .filter(({ string }) => string.includes(inputValue))
+      .map(({ id }) => props.allProducts.find((product) => product.id == id));
+
+    props.saveSearchResults(searchResults);
   };
 
-  // const filterSearchResults = () => {
-  //   const inputValue = getInputValue();
-  //   console.log("iinput value in search", inputValue);
-  // };
-
-  const onKeyPress = (e) => {
+  function onKeyPress(e) {
     if (e.key === "Enter") {
       navigate("/search-results");
       console.log("pressed:", e.key);
     }
-  };
+  }
 
   return (
     <div
@@ -141,4 +156,5 @@ const mapStateToProps = (store) => {
 
 export default connect(mapStateToProps, {
   getAllProducts,
+  saveSearchResults,
 })(Search);

@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "../Card";
-import CardDescription from "../Card/CardDescription";
+import CardWrapper from "../CardWrapper";
+import Card from "../CardWrapper/Card";
 import ProductGroupTitle from "../ProductGroupTitle";
 
 const productList = [
@@ -38,11 +38,11 @@ const Shoes = () => {
   return (
     <div className="catalog__shoes">
       <ProductGroupTitle title="Shoes" />
-      <Card>
+      <CardWrapper>
         {productList.map((product) => {
           const { productDetails, productCode, productPrice, src } = product;
           return (
-            <CardDescription
+            <Card
               product={product}
               productDetails={productDetails}
               productCode={productCode}
@@ -52,12 +52,12 @@ const Shoes = () => {
             />
           );
         })}
-      </Card>
-      <Card>
+      </CardWrapper>
+      <CardWrapper>
         {productList.map((product) => {
           const { productDetails, productCode, productPrice, src } = product;
           return (
-            <CardDescription
+            <Card
               product={product}
               productDetails={productDetails}
               productCode={productCode}
@@ -67,7 +67,7 @@ const Shoes = () => {
             />
           );
         })}
-      </Card>
+      </CardWrapper>
     </div>
   );
 };

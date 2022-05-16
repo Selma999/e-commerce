@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import CardDescription from "../Card/CardDescription";
 import Button from "../../components/Button";
+import Card from "../CardWrapper/Card";
 
 import { deleteProductFromCart } from "../../Redux/Actions/Product";
 
@@ -31,7 +31,7 @@ function Cart(props) {
           const { title, price, image } = product;
           return (
             <div key={product.id} className="product">
-              <CardDescription
+              <Card
                 product={product}
                 productDetails={title}
                 productPrice={price}
