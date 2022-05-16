@@ -1,7 +1,6 @@
-import React, { lazy } from "react";
+import React from "react";
 
 const AppRoute = ({ location }) => {
-  const { pathname, search } = location;
   return <></>;
 };
 

@@ -12,7 +12,6 @@ const Catalog = () => {
       <Link to="/catalog"></Link>
       <Header />
       <Container>
-          {/* here should go component Catalog instead of ProductGroup, so make one! */}
         <ProductGroup />
       </Container>
       <Footer />
@@ -21,4 +20,3 @@ const Catalog = () => {
 };
 
 export default Catalog;
- 
